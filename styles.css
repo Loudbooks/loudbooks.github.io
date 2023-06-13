@@ -1,28 +1,7 @@
-body{
-  overflow: hidden;
+* {
+  padding: 0;
+  margin: 0;
 }
-html{
-  scroll-behavior: smooth;
-}
-#sec1{
-    background: linear-gradient(350deg,#f05a41,#f54f97) center center fixed;
-    background-size: cover;
-    height: 100vh;
-    animation: gradient-animation 10s ease infinite;
-    background-repeat: no-repeat;
-  }
-  
-  @keyframes gradient-animation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
 
 #hi{
   animation: changing1 10s ease infinite;
@@ -30,6 +9,7 @@ html{
 #loudbook{
   animation: changing2 10s ease infinite;
 }
+
  @keyframes changing1 {
   0%{
     opacity: 1;
@@ -68,57 +48,80 @@ html{
 } 
 
 .container {
-  width: 300px;
-  height: 94vh;
-  margin: auto auto;
+  width: 100vw;
   display: grid;
-  place-items: center;
-  grid-template-areas: "inner-div";
+  justify-content: center;
+  position: fixed;
+  background-image: url(gradient.png);
+  animation: gradient-animation 10s ease infinite;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  z-index: 0;
 }
 
 .inner {
-  margin: 0;
   font-size: 10vw;
   font-family: "Poppins", sans-serif;
   white-space: nowrap;
   overflow: hidden;
   color: white;
   text-align: center;
+  
   grid-area: inner-div;
 }
 
-#arrow{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  transition: all 1s;
-  margin-top: -50px;
+h1 {
+  width: 100vw;
 }
-#arrow:hover{
-  transform: translateY(15px);
-  width: 55px;
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.test {
+  height: 400vh;
 }
 
 #langs{
+  padding: 0;
   margin: 0;
   font-size: 10vw;
   font-family: "Poppins", sans-serif;
-  white-space: nowrap;
-  overflow: hidden;
-  color: black;
+  background: linear-gradient(350deg,#f05a41,#f54f97);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 1;
+  grid-area: inner-div;
   text-align: center;
-  padding-top: 30vh;
+  position: fixed;
 }
-#langsdiv{
-  margin: 0;
+
+.linecontainer {
+  width: 100vw;
+  display: grid;
+  justify-content: center;
+  position: fixed;
+  text-align: center;
   height: 100vh;
+  transform: translate(-30vw, 0);
 }
-#langsdesc{
-  margin: 0;
-  font-size: 2vw;
-  font-family: "Poppins", sans-serif;
-  white-space: nowrap;
-  overflow: hidden;
-  color: black;
-  text-align: center;
+
+.line {
+  justify-content: center;
+  height: 5vh;
+  background: linear-gradient(350deg,#f05a41,#f54f97);
+  width: 40vw;
+  top: -10vh;
+  grid-area: inner-div;
 }

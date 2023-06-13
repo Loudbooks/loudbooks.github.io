@@ -1,17 +1,30 @@
 let section = 1
 let scrollpos = 0
-function mousePos(e){
 
-}
+let start = 50
+let end = 500
 
+window.onscroll = function() {
+    let scrollval = document.documentElement.scrollTop
 
+    document.getElementsByClassName("container")[0].style.opacity = 1-Math.min(window.scrollY / end, 1);
+    Array.from(document.getElementsByClassName("inner")).forEach(element => element.style.transform = "translateY(" + -(Math.min(window.scrollY / end, 1) * 30) + "vh)")
 
-function nextSection(){
-    if (window.scrollY != 0){
-        window.scrollTo(window.scrollX, window.scrollY + window.innerHeight)
-    } else {
-        window.scrollTo(window.scrollX, window.innerHeight)
+    if (window.scrollY > 700) {
+        start = window.scrollY-700
+        end = 800
+
+        let element = document.getElementById("langs")
+
+        element.style.opacity = Math.min(start / end, 1);
+
+        if (start - end <=0) {
+            console.log(((start-end)/75) + 50)
+            element.style.transform = "translateY(" + ((start-end)/75) + 50 + "vh)"
+        }
     }
+
+    scrollpos = scrollval
 }
 
 let middlecontent = ["Java", "Kotlin", "JavaScript", "Python", "MongoDB", "HTML", "CSS", "Spigot", "Minestom", "Minecraft"]
