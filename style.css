@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+}
+
+.titlecontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(142deg, rgba(240, 89, 71, 1) 29%, rgba(244, 81, 128, 1) 67%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    overflow: visible;
+    filter: blur(3rem);
+
+    transition: background-position-x 1s ease-out, filter 1s ease-in-out;
+}
+
+.titlecontainer span {
+    font-family: "Gabarito", serif;
+    font-size: 20vw;
+    background-clip: text;
+    display: inline-block;
+    overflow: visible;
+    transition: transform 3s ease-in-out;
+}
