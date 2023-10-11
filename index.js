@@ -1,4 +1,4 @@
-function funninizeText() {
+function intoText() {
     randomizeText()
     setInterval(() => {
         randomizeText()
