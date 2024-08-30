@@ -15,7 +15,7 @@
         setTimeout(() => {
             link.style.transform = "translateY(0px)";
             link.style.opacity = "1";
-        }, (i + 3) * 100);
+        }, (i + 3) * 300);
     }
   })
 </script>
