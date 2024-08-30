@@ -73,7 +73,7 @@
         @media (max-width: 800px) {
             text-align: center;
             width: 100%;
-            font-size: 60px;
+            font-size: 50px;
         }
     }
 

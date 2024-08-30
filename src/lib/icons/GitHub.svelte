@@ -20,8 +20,8 @@
         }
 
         @media (max-width: 800px) {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
         }
     }
 
