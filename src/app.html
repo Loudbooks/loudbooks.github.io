@@ -3,17 +3,9 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="description" content="Loudbook's personal portfolio." />
 		<title>Loudbook</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="Loudbook's personal portfolio." />
-		<og:title content="Loudbook" />
-		<og:description content="Loudbook's personal portfolio." />
-		<og:image content="https://cdn.discordapp.com/avatars/664597683511492608/ffe930b23a3532b830a6d5cbfc44cc3d?size=1024" />
-		<og:url content="https://loudbook.dev" />
-		<og:type content="website" />
-		<og:site_name content="Loudbook" />
-		<og:locale content="en_US" />
-		<meta name="theme-color" content="#F4528E" />
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
@@ -23,7 +15,9 @@
 
 <style>
 	body {
-		overflow: hidden;
+		/* overflow: hidden; */
+		margin: 0;
+		overflow-x: hidden;
 	}
 
 	@font-face {
