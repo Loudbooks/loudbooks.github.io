@@ -50,12 +50,12 @@
                     setTimeout(() => {
                         descriptionElement.style.transform = "translateY(0px)";
                         descriptionElement.style.opacity = "1";
-                    }, 200);
+                    }, 300);
 
                     setTimeout(() => {
                         linkElement.style.transform = "translateY(0px)";
                         linkElement.style.opacity = "1";
-                    }, 400);
+                    }, 500);
 
                     setTimeout(() => {
                         versionBlockElement.style.transform = "translateX(0px)";
@@ -74,14 +74,20 @@
 
 <div id="project" bind:this={projectBlockElement}>
     <div id="text-block">
-        <div id="name">
-            <h1 id="project-name" bind:this={nameElement}>{name}</h1>
-            <div id="line" bind:this={underlineElement}></div>
+        <div id="name-block" bind:this={nameElement}>
+            <div id="name">
+                <h1 id="project-name">{name}</h1>
+                <div id="line" bind:this={underlineElement}></div>
+            </div>
+            <div id="small-link">
+                <Link destination={link} text={link} glyph="Link" />
+            </div>
         </div>
         <p id="project-description" bind:this={descriptionElement}>{description}</p>
+
         <div id="links" bind:this={linkElement}>
             <Link destination={link} text={link} glyph="Link" />
-        </div>
+        </div>  
     </div>
     <a id="version-block" bind:this={versionBlockElement} href={`https://github.com/Loudbooks/${name.replace(" ", "-")}/releases/latest`} target="_blank">
         <div id="release-content">
@@ -101,6 +107,13 @@
         align-items: center;
 
         margin-left: 5vw;
+
+        @media (max-width: 800px) {
+            flex-direction: column;
+            align-items: flex-start;
+            margin-right: 5vw;
+            margin-left: 5vw;
+        }
     }
 
     #text-block {
@@ -109,6 +122,11 @@
         gap: 20px;
         width: 60%;
 
+        @media (max-width: 800px) {
+            width: 100%;
+            gap: 5px;
+        }
+
         #project-name {
             font-family: "Visby";
             font-size: 50px;
@@ -116,18 +134,39 @@
             color: black;
             margin: 0;
 
-            transform: translateY(20px);
-            opacity: 0;
-            transition: transform 1s, opacity 1s;
+            text-align: left;
 
             position: relative;
             width: fit-content;
+
+            @media (max-width: 800px) {
+                font-size: 40px;
+                text-align: center;
+                width: 100%;
+            }
         }
 
         #name {
             display: flex;
             flex-direction: column;
             width: fit-content;
+        }
+
+        #name-block {
+            display: flex;
+
+            justify-content: start;
+            align-items: center;
+            gap: 20px;
+
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 1s, opacity 1s;
+
+            @media (max-width: 800px) {
+                gap: 5px;
+                justify-content: space-between;
+            }
         }
 
         #line {
@@ -137,6 +176,10 @@
             transform: translateY(20px);
 
             transition: width 1s cubic-bezier(.93,0,.2,1), transform 1s, opacity 1s;
+
+            @media (max-width: 800px) {
+                // display: none;
+            }
         }
 
         #project-description {
@@ -155,6 +198,20 @@
         transform: translateY(20px);
         opacity: 0;
         transition: transform 1s, opacity 1s;
+
+        @media (max-width: 800px) {
+            display: none;
+        }
+    }
+
+    #small-link {
+        display: none;
+
+        @media (max-width: 800px) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
     
     #version-block {
@@ -183,6 +240,10 @@
 
         &:active {
             padding-right: 100px;
+        }
+
+        @media (max-width: 800px) {
+            display: none;
         }
 
         #release-content {

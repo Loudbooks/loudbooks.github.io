@@ -19,5 +19,10 @@
         margin-top: 100px;
 
         z-index: 1002;
+
+        @media (max-width: 800px) {
+            gap: 70px;
+            margin-top: 50px;
+        }
     }
 </style>

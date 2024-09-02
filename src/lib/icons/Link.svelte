@@ -9,13 +9,8 @@
         color: black;
 
         @media (max-width: 1300px) {
-            width: 30px;
-            height: 30px;
-        }
-
-        @media (max-width: 1050px) {
-            width: 25px;
-            height: 25px;
+            width: 20px;
+            height: 20px;
         }
 
         @media (max-width: 800px) {
