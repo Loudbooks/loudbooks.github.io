@@ -85,10 +85,21 @@
     span::before {
         content: '';
         position: absolute;
-        width: 100%;
+        width: 0;
         height: 4px;
         background-color: white;
         bottom: 0;
+
+        animation: moveIn 1s 1s cubic-bezier(.93,0,.2,1) forwards;
+
+        @keyframes moveIn {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
     }
 
     #title-container {
