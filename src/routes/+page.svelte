@@ -90,7 +90,7 @@
         background-color: white;
         bottom: 0;
 
-        animation: moveIn 1s 1s cubic-bezier(.93,0,.2,1) forwards;
+        animation: moveIn 1s 0.6s cubic-bezier(.93,0,.2,1) forwards;
 
         @keyframes moveIn {
             0% {
