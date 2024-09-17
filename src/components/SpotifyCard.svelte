@@ -112,6 +112,7 @@ import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
         height: 35px;
+        outline: 4px solid rgb(225, 225, 225, 1);
 
         animation: flyIn 1s ease;
 
@@ -126,9 +127,6 @@ import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
 
             animation: flyInMobile 1s ease;
         }
-
-        outline: 4px solid rgb(225, 225, 225, 1);
-
 
         img {
             width: 80px;
