@@ -17,7 +17,6 @@
 
         setInterval(() => {
             fetchSong().then(updatedData => {
-                console.log(updatedData)
                 data = updatedData;
             });
         }, 10000);
@@ -33,8 +32,6 @@
                 return res.json();
             })
             .then(async (json: SpotifyDTO) => {
-                console.log("fetching");
-
                 if (data !== undefined && data.trackName == json.trackName) {
                     return data;
                 }
