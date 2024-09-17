@@ -14,7 +14,7 @@ import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
     });
 
     function fetchSong() {
-        return fetch("http://localhost:25653/api/spotify")
+        return fetch("https://loudbook.dev/api/spotify")
             .then((res) => {
                 if (res.status !== 200) {
                     throw new Error("Failed to fetch Spotify data.");
