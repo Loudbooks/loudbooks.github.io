@@ -123,7 +123,7 @@
 
             border-radius: 15px;
 
-            gap: 12px;
+            gap: 20px;
 
             animation: flyInMobile 1s ease;
         }
