@@ -7,10 +7,20 @@ import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
     let imageBase64: string | undefined;
     let response: Promise<SpotifyDTO>;
 
-    onMount(() => {
+    let trackName: string = "";
+    let artistName: string = "";
+    let albumImage: string = "";
+    let trackLink: string = "";
+
+    onMount(async () => {
         response = fetchSong();
 
-        setInterval(fetchSong, 10000);
+        setInterval(() => {
+            fetchSong().then(updatedData => {
+                console.log(updatedData)
+                data = updatedData;
+            });
+        }, 10000);
     });
 
     function fetchSong() {
@@ -23,11 +33,17 @@ import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
                 return res.json();
             })
             .then(async (json: SpotifyDTO) => {
+                console.log("fetching");
+
                 if (data !== undefined && data.trackName == json.trackName) {
                     return data;
                 }
 
                 data = json;
+
+                trackName = json.trackName;
+                artistName = json.artistName;
+                trackLink = json.trackLink;
 
                 imageBase64 = await preload(json.albumImage) as string;
 
@@ -59,16 +75,16 @@ import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
 
 {#await response then data}
     {#if data !== undefined}
-        <a id="spotify-container" href="{data.trackLink}">
+        <a id="spotify-container" href="{trackLink}">
             <img src={imageBase64} alt="Album cover" />
             <div id="song-info">
                 <div id="title-container">
-                    <h1>{data.trackName}</h1>
+                    <h1>{trackName}</h1>
                     <div id="waves-container">
                         <MusicWaves />
                     </div>  
                 </div>
-                <h2>by {data.artistName}</h2>
+                <h2>by {artistName}</h2>
             </div>
 
             <div id="mobile-waves-container">
