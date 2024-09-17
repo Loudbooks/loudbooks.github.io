@@ -1,13 +1,12 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import Link from "../components/Link.svelte";
+  import SpotifyCard from "../components/SpotifyCard.svelte";
 
   let linkContainer: HTMLElement;
 
   onMount(() => {
     const links = linkContainer.children;
-
-    console.log(links);
 
     for (let i = 0; i < links.length; i++) {
         let link = links[i] as HTMLElement;
@@ -37,6 +36,8 @@
             </div>
         </div>
     </div>
+
+    <SpotifyCard />
 </div>
 
 
