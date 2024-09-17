@@ -53,7 +53,7 @@ export async function refreshAccessToken(refreshToken: string) {
     return newToken;
 };
 
-export async function getCurrentPlayingTrack(accessToken: string) {
+export async function getCurrentPlayingTrack(accessToken: string): Promise<any> {
     const response = await axios.get('https://api.spotify.com/v1/me/player/currently-playing', {
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -71,7 +71,7 @@ export async function getCurrentPlayingTrack(accessToken: string) {
     if (response === 401) {
         if (!refreshToken) {
             console.error('No refresh token found');
-            return;
+            return null;
         }
 
         accessToken = await refreshAccessToken(refreshToken);
