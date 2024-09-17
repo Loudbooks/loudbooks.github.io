@@ -1,6 +1,6 @@
 <script lang="ts">
     import MusicWaves from "$lib/icons/MusicWaves.svelte";
-import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
+    import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
     import { onMount } from "svelte";
 
     let data: SpotifyDTO | undefined;
