@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-
     let circle: HTMLElement;
 </script>
 
@@ -19,14 +17,6 @@
         align-items: center;
         gap: 10px;
 
-        @media (max-width: 800px) {
-            width: 15px;
-            height: 15px;
-
-            background-color: white;
-            outline: 2px solid rgb(225, 225, 225, 1);
-        }
-
         border-radius: 50%;
         position: relative;
 
@@ -43,11 +33,6 @@
 
                 animation: bounce 2.2s ease infinite alternate;
                 transform-origin: bottom;
-
-                @media (max-width: 800px) {
-                    width: 2px;
-                    height: 5px;
-                }
             }
 
             span {

@@ -113,16 +113,22 @@ import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
         border-bottom-right-radius: 0px;
         height: 35px;
 
-        outline: 4px solid rgb(225, 225, 225, 1);
-
         animation: flyIn 1s ease;
 
         @media (max-width: 800px) {
-            width: 0;
-            padding-right: 50px;
-            background-color: transparent;
-            outline: none;
+            right: 50%;
+            transform: translateX(50%);
+            padding-right: 10px;
+
+            border-radius: 15px;
+
+            gap: 12px;
+
+            animation: flyInMobile 1s ease;
         }
+
+        outline: 4px solid rgb(225, 225, 225, 1);
+
 
         img {
             width: 80px;
@@ -135,10 +141,27 @@ import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
 
             &:hover {
                 transform: scale(1.05) translateX(-20px);
+
+                @media (max-width: 800px) {
+                    transform: scale(1.05) translateX(-1px);
+                }
             }
 
             &:active {
                 transform: scale(1) translateX(-20px);
+
+                @media (max-width: 800px) {
+                    transform: scale(1) translateX(-1px);
+                }
+            }
+
+            @media (max-width: 800px) {
+                width: 40px;
+                height: 40px;
+
+                border-radius: 10px;
+
+                transform: translateX(-1px);
             }
         }
 
@@ -146,10 +169,6 @@ import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
             transform: translateX(-5px);
 
             color: black;
-
-            @media (max-width: 800px) {
-                display: none;
-            }
 
             #title-container {
                 display: flex;
@@ -165,6 +184,8 @@ import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
                 margin: 0;
 
                 display: inline-block;
+
+                white-space: nowrap;
             }
 
             h2 {
@@ -172,6 +193,8 @@ import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
                 font-weight: 400;
                 font-family: "Visby";
                 margin: 0;
+
+                white-space: nowrap;
             }
         }
 
@@ -181,13 +204,6 @@ import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
 
         #mobile-waves-container {
             display: none;
-
-            @media (max-width: 800px) {
-                display: inline-block;
-                position: absolute;
-                right: 27px;
-                bottom: -15px;
-            }
         }
     }
 
@@ -210,6 +226,16 @@ import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
 
         100% {
             transform: translateX(0);
+        }
+    }
+
+    @keyframes flyInMobile {
+        0% {
+            transform: translateY(400%) translateX(50%);
+        }
+
+        100% {
+            transform: translateY(0) translateX(50%);
         }
     }
 </style>
