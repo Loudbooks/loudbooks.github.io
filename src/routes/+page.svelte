@@ -19,9 +19,8 @@
   })
 </script>
 <div id="background">
-    <div id="overlay"/>
-    <div id="elipse"/>
-    
+    <img src="landing.webp" alt="Background" />
+
     <div id="content">
         <div id="title-container">
             <h1 id="line-one">Hi.</h1>
@@ -42,17 +41,27 @@
 
 
 <style lang="scss">
-    #overlay {
-        content: '';
-        backdrop-filter: blur(200px);
+    img {
+        width: 100vw;
+        height: 100vh;
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
+        display: block;
         z-index: 1000;
 
-        background-color: rgba(255, 255, 255, 0.03);
+        @media (max-width: 1100px) {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 800px) {
+            transform: rotate(90deg) translateY(20%);
+            width: 100vh;
+        }
+
+        animation: fadeIn 1s ease;
     }
 
     h1 {
@@ -118,40 +127,6 @@
         }
     }
 
-    #elipse {
-        position: absolute;
-        left: -50vw;
-        top: -45vh;
-        width: 140vw;
-        height: 160vh;
-        background: linear-gradient(290deg, #F05A4D 30%, #F4528E 40%);
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 9999px;
-
-        clip-path: ellipse(50% 30% at 50% 50%);
-
-        animation: flyIn 1s ease;
-
-        @media (max-width: 600px) {
-            left: -100vw;
-            top: -25vw;
-            width: 200vw;
-            height: 100vh;
-            clip-path: none;
-        }
-
-        @keyframes flyIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-100px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    }
-
     #content {
         position: absolute;
         top: 0;
@@ -207,11 +182,9 @@
     @keyframes fadeIn {
         0% {
             opacity: 0;
-            transform: translateY(50px);
         }
         100% {
             opacity: 1;
-            transform: translateY(0);
         }
     }
 </style>
