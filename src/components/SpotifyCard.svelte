@@ -105,12 +105,12 @@
     <img src={imageBase64} alt="Album cover" />
     <div id="song-info">
         <div id="title-container">
-            <h1>{trackName}</h1>
+            <h1 id="track-title">{trackName}</h1>
             <div id="waves-container">
                 <MusicWaves />
             </div>  
         </div>
-        <h2>by {artistName}</h2>
+        <h2 id="track-artist">by {artistName}</h2>
     </div>
 
     <div id="mobile-waves-container">
@@ -203,11 +203,7 @@
             #title-container {
                 display: flex;
                 align-items: center;
-                gap: 10px;
-
-                @media (max-width: 800px) {
-                    gap: 12px;
-                }
+                gap: 12px;
             }
 
             h1 {
@@ -216,6 +212,7 @@
                 font-family: "Visby";
                 font-weight: 1000;
                 margin: 0;
+                transition: transform 0.2s;
 
                 display: inline-block;
 
@@ -226,6 +223,31 @@
                 }
             }
 
+            &:active {
+                #track-title {
+                    transform: scale(0.98);
+                }
+
+                #track-artist {
+                    transform: scale(0.98);
+                }
+            }
+
+            h1:hover::after {
+                width: 100%;
+            }
+
+            h1::after {
+                content: "";
+                display: block;
+                width: 0%;
+                height: 1.5px;
+                background-color: black;
+                margin-top: -2.5px;
+
+                transition: width 0.5s cubic-bezier(.93,0,.2,1);
+            }
+
             h2 {
                 font-size: 0.6rem;
                 font-weight: 400;
@@ -233,6 +255,7 @@
                 margin: 0;
 
                 white-space: nowrap;
+                transition: transform 0.2s;
 
                 @media (max-width: 800px) {
                     font-size: 0.5rem;
@@ -251,6 +274,14 @@
 
     a {
         transition: transform 0.2s;
+    }
+
+    a:hover {
+        cursor: pointer;
+
+        #track-title::after {
+            width: 100%;
+        }
     }
 
     a:link {
