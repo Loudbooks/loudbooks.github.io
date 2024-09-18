@@ -14,7 +14,7 @@ const scopes = [
 
 const authUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirectUri)}`;
 
-export async function exchangeCodeForToken (code: string, clientId: string, clientSecret: string, redirectUri: string) {
+export async function exchangeCodeForToken(code: string, clientId: string, clientSecret: string, redirectUri: string) {
     const response = await axios.post('https://accounts.spotify.com/api/token', null, {
         params: {
             grant_type: 'authorization_code',
@@ -99,7 +99,14 @@ export async function getAlbum(accessToken: string, albumId: string) {
         headers: {
             Authorization: `Bearer ${accessToken}`,
         },
+    }).catch((error) => {
+        console.log(error);
+        return null;
     })
+
+    if (!response) {
+        return null;
+    }
 
     return response.data;
 }
