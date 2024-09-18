@@ -138,7 +138,7 @@
         padding: 10px;
         padding-right: 100px;
 
-        background-color: white;
+        background-color: rgb(255, 255, 255, 1);
         border-radius: 30px;
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
@@ -202,7 +202,7 @@
             #title-container {
                 display: flex;
                 align-items: center;
-                gap: 5px;
+                gap: 11px;
             }
 
             h1 {
