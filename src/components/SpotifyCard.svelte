@@ -56,7 +56,7 @@
                 if (spotifyElement !== undefined && spotifyElement.style.display == "none") {
                     spotifyElement.style.display = "flex";
                     if (window.innerWidth < 800) {
-                        spotifyElement.style.transform = "translateY(0)";
+                        spotifyElement.style.transform = "translateY(0) translateX(50%)";
                     } else {
                         spotifyElement.style.transform = "translateX(0)";
                     }
@@ -72,7 +72,7 @@
                 }
 
                 if (window.innerWidth < 800) {
-                    spotifyElement.style.transform = "translateY(400%)";
+                    spotifyElement.style.transform = "translateY(400%) translateX(50%)";
                 } else {
                     spotifyElement.style.transform = "translateX(100%)";
                 }
