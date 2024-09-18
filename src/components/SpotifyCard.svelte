@@ -53,8 +53,7 @@
 
                 imageBase64 = await preload(json.albumImage) as string;
 
-                if (spotifyElement !== undefined && spotifyElement.style.display == "none") {
-                    spotifyElement.style.display = "flex";
+                if (spotifyElement !== undefined) {
                     if (window.innerWidth < 800) {
                         spotifyElement.style.transform = "translateY(0) translateX(50%)";
                     } else {
@@ -64,21 +63,19 @@
 
                 return json;
             })
-            .catch((error) => {
-                console.log("No Spotify data available.");
-
-                if (spotifyElement === undefined) {
+            .catch(() => {
+                if (spotifyElement == undefined) {
+                    data = undefined;
                     return undefined;
                 }
 
                 if (window.innerWidth < 800) {
                     spotifyElement.style.transform = "translateY(400%) translateX(50%)";
                 } else {
-                    spotifyElement.style.transform = "translateX(100%)";
+                    spotifyElement.style.transform = "translateX(150%)";
                 }
 
                 setTimeout(() => {
-                    spotifyElement.style.display = "none";
                     data = undefined;
                 }, 1000);
 
@@ -104,26 +101,22 @@
 
 </script>
 
-{#await response then data}
-    {#if data !== undefined}
-        <a id="spotify-container" href="{trackLink}" bind:this={spotifyElement}>
-            <img src={imageBase64} alt="Album cover" />
-            <div id="song-info">
-                <div id="title-container">
-                    <h1>{trackName}</h1>
-                    <div id="waves-container">
-                        <MusicWaves />
-                    </div>  
-                </div>
-                <h2>by {artistName}</h2>
-            </div>
-
-            <div id="mobile-waves-container">
+<a id="spotify-container" href="{trackLink}" bind:this={spotifyElement}>
+    <img src={imageBase64} alt="Album cover" />
+    <div id="song-info">
+        <div id="title-container">
+            <h1>{trackName}</h1>
+            <div id="waves-container">
                 <MusicWaves />
-            </div>
-        </a>
-    {/if}
-{/await}
+            </div>  
+        </div>
+        <h2>by {artistName}</h2>
+    </div>
+
+    <div id="mobile-waves-container">
+        <MusicWaves />
+    </div>
+</a>
 
 <style lang="scss">
     #spotify-container {
@@ -145,11 +138,12 @@
         height: 35px;
         outline: 4px solid rgb(225, 225, 225, 1);
 
-        animation: flyIn 1s ease;
+        transform: translateX(150%);
+        transition: transform 1s ease;
 
         @media (max-width: 800px) {
             right: 50%;
-            transform: translateX(50%);
+            transform: translateX(50%) translateY(400%);
             padding-right: 10px;
 
             height: 20px;
