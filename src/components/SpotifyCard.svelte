@@ -5,7 +5,7 @@
 
     let spotifyElement: HTMLElement;
 
-    let data: SpotifyDTO | undefined;
+    let data: SpotifyDTO | undefined = undefined;
     let imageBase64: string | undefined;
     let response: Promise<SpotifyDTO>;
 
@@ -18,12 +18,14 @@
 
         setInterval(() => {
             fetchSong().then(updatedData => {
-                console.log("Updated Spotify data.");
                 if (updatedData === undefined) {
                     return;
                 }
 
-                response = Promise.resolve(updatedData);
+                if (data == undefined) {
+                    response = Promise.resolve(updatedData);
+                }
+
                 data = updatedData;
             });
         }, 10000);
@@ -51,7 +53,7 @@
 
                 imageBase64 = await preload(json.albumImage) as string;
 
-                if (spotifyElement !== undefined && spotifyElement.style.display === "none") {
+                if (spotifyElement !== undefined && spotifyElement.style.display == "none") {
                     spotifyElement.style.display = "flex";
                     if (window.innerWidth < 800) {
                         spotifyElement.style.transform = "translateY(0)";
@@ -63,7 +65,6 @@
                 return json;
             })
             .catch((error) => {
-                console.error(error);
                 console.log("No Spotify data available.");
 
                 if (spotifyElement === undefined) {
@@ -78,6 +79,7 @@
 
                 setTimeout(() => {
                     spotifyElement.style.display = "none";
+                    data = undefined;
                 }, 1000);
 
                 return undefined;
