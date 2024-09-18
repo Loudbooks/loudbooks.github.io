@@ -175,7 +175,7 @@
                 transform: scale(1.05) translateX(-20px);
 
                 @media (max-width: 800px) {
-                    transform: scale(1.05) translateX(-1px);
+                    transform: scale(1.05) translateX(-4px);
                 }
             }
 
@@ -183,7 +183,7 @@
                 transform: scale(1) translateX(-20px);
 
                 @media (max-width: 800px) {
-                    transform: scale(1) translateX(-1px);
+                    transform: scale(1) translateX(-4px);
                 }
             }
 
@@ -193,7 +193,7 @@
 
                 border-radius: 10px;
 
-                transform: translateX(-2px);
+                transform: translateX(-4px);
             }
         }
 
