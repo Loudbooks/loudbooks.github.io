@@ -165,7 +165,7 @@
 
             transition: transform 0.2s ease;
 
-            box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.4);
 
             &:hover {
                 transform: scale(1.05) translateX(-20px);
