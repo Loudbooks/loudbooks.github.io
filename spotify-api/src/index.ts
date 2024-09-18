@@ -25,6 +25,12 @@ app.get('/api/spotify', async (req: Request, res: Response) => {
 
         let albumData = await getAlbum(accessToken, currentPlayingTrackData.item.album.id);
 
+        if (!albumData) {
+            cachedDTO = null;
+            res.json(null).status(204);
+            return;
+        }
+
         let trackName = currentPlayingTrackData.item.name;
         let albumName = albumData.name;
         let albumImage = albumData.images[0].url;

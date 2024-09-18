@@ -68,7 +68,7 @@ export async function getCurrentPlayingTrack(accessToken: string): Promise<any> 
         }
     });
 
-    if (response === 401) {
+    if (response == 401) {
         if (!refreshToken) {
             console.error('No refresh token found');
             return null;
