@@ -152,9 +152,12 @@
             transform: translateX(50%);
             padding-right: 10px;
 
-            border-radius: 15px;
+            height: 20px;
+            outline: 2px solid rgb(225, 225, 225, 1);
 
-            gap: 20px;
+            border-radius: 13px;
+
+            gap: 15px;
 
             animation: flyInMobile 1s ease;
         }
@@ -185,12 +188,12 @@
             }
 
             @media (max-width: 800px) {
-                width: 40px;
-                height: 40px;
+                width: 30px;
+                height: 30px;
 
                 border-radius: 10px;
 
-                transform: translateX(-1px);
+                transform: translateX(-2px);
             }
         }
 
@@ -215,6 +218,10 @@
                 display: inline-block;
 
                 white-space: nowrap;
+                
+                @media (max-width: 800px) {
+                    font-size: 0.9rem;
+                }
             }
 
             h2 {
@@ -224,6 +231,10 @@
                 margin: 0;
 
                 white-space: nowrap;
+
+                @media (max-width: 800px) {
+                    font-size: 0.5rem;
+                } 
             }
         }
 
