@@ -202,7 +202,7 @@
             #title-container {
                 display: flex;
                 align-items: center;
-                gap: 11px;
+                gap: 10px;
             }
 
             h1 {
