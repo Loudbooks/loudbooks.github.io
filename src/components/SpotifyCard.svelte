@@ -165,6 +165,8 @@
 
             transition: transform 0.2s ease;
 
+            box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.4);
+
             &:hover {
                 transform: scale(1.05) translateX(-20px);
 
@@ -188,6 +190,8 @@
                 border-radius: 10px;
 
                 transform: translateX(-4px);
+
+                box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
             }
         }
 
@@ -200,6 +204,10 @@
                 display: flex;
                 align-items: center;
                 gap: 10px;
+
+                @media (max-width: 800px) {
+                    gap: 12px;
+                }
             }
 
             h1 {
