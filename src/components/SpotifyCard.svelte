@@ -3,13 +3,14 @@
     import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
     import { onMount } from "svelte";
 
+    let spotifyElement: HTMLElement;
+
     let data: SpotifyDTO | undefined;
     let imageBase64: string | undefined;
     let response: Promise<SpotifyDTO>;
 
     let trackName: string = "";
     let artistName: string = "";
-    let albumImage: string = "";
     let trackLink: string = "";
 
     onMount(async () => {
@@ -17,6 +18,12 @@
 
         setInterval(() => {
             fetchSong().then(updatedData => {
+                console.log("Updated Spotify data.");
+                if (updatedData === undefined) {
+                    return;
+                }
+
+                response = Promise.resolve(updatedData);
                 data = updatedData;
             });
         }, 10000);
@@ -32,7 +39,7 @@
                 return res.json();
             })
             .then(async (json: SpotifyDTO) => {
-                if (data !== undefined && data.trackName == json.trackName) {
+                if (data != null && data.trackName == json.trackName) {
                     return data;
                 }
 
@@ -44,10 +51,35 @@
 
                 imageBase64 = await preload(json.albumImage) as string;
 
+                if (spotifyElement !== undefined && spotifyElement.style.display === "none") {
+                    spotifyElement.style.display = "flex";
+                    if (window.innerWidth < 800) {
+                        spotifyElement.style.transform = "translateY(0)";
+                    } else {
+                        spotifyElement.style.transform = "translateX(0)";
+                    }
+                }
+
                 return json;
             })
             .catch((error) => {
+                console.error(error);
                 console.log("No Spotify data available.");
+
+                if (spotifyElement === undefined) {
+                    return undefined;
+                }
+
+                if (window.innerWidth < 800) {
+                    spotifyElement.style.transform = "translateY(400%)";
+                } else {
+                    spotifyElement.style.transform = "translateX(100%)";
+                }
+
+                setTimeout(() => {
+                    spotifyElement.style.display = "none";
+                }, 1000);
+
                 return undefined;
             }) as Promise<SpotifyDTO>;
     }
@@ -72,7 +104,7 @@
 
 {#await response then data}
     {#if data !== undefined}
-        <a id="spotify-container" href="{trackLink}">
+        <a id="spotify-container" href="{trackLink}" bind:this={spotifyElement}>
             <img src={imageBase64} alt="Album cover" />
             <div id="song-info">
                 <div id="title-container">
