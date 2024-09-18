@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { cacheTokenToFile } from './accessTokenHandler';
+import { setAccessToken } from '.';
 
 require('dotenv').config();
 const refreshToken = process.env.REFRESH_TOKEN;
@@ -48,8 +49,9 @@ export async function refreshAccessToken(refreshToken: string) {
 
     const newToken = response.data.access_token;
 
+    setAccessToken(newToken);
     cacheTokenToFile(newToken);
-
+    
     return newToken;
 };
 

@@ -3,7 +3,7 @@ import { getCurrentPlayingTrack, getAlbum } from './spotifyAPI';
 import { Request, Response } from 'express';
 import { SpotifyDTO } from './types/SpotifyDTO';
 
-let accessToken = getAccessToken();
+export let accessToken = getAccessToken();
 
 const app = require('express')();
 const PORT = 25653;
@@ -52,3 +52,7 @@ app.get('/api/spotify', async (req: Request, res: Response) => {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 })
+
+export function setAccessToken(newToken: string) {
+    accessToken = newToken;
+}
