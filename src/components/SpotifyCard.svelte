@@ -45,13 +45,13 @@
                     return data;
                 }
 
+                imageBase64 = await preload(json.albumImage) as string;
+
                 data = json;
 
                 trackName = json.trackName;
                 artistName = json.artistName;
                 trackLink = json.trackLink;
-
-                imageBase64 = await preload(json.albumImage) as string;
 
                 if (spotifyElement !== undefined) {
                     if (window.innerWidth < 800) {
