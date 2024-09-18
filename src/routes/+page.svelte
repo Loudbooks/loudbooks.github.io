@@ -50,6 +50,8 @@
         display: block;
         z-index: 1000;
 
+        animation: fadeIn 1s ease;
+
         @media (max-width: 1100px) {
             width: 100%;
             height: 100%;
@@ -60,8 +62,6 @@
             transform: rotate(90deg) translateY(20%);
             width: 100vh;
         }
-
-        animation: fadeIn 1s ease;
     }
 
     h1 {
