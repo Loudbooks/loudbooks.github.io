@@ -152,8 +152,6 @@
             border-radius: 13px;
 
             gap: 15px;
-
-            animation: flyInMobile 1s ease;
         }
 
         img {
