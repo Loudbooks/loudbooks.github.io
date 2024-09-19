@@ -6,3 +6,11 @@ spotify-api/cache
 spotify-api/.env
 spotify-api/build
 spotify-api/node_modules
+.wrangler
+.dev.vars
+.env
+.env.*
+!.env.example
+!.env.test
+.output
+.vscode
