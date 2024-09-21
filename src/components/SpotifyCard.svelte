@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { preload } from "$lib";
     import MusicWaves from "$lib/icons/MusicWaves.svelte";
     import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
     import { onMount } from "svelte";
@@ -82,23 +83,6 @@
                 return undefined;
             }) as Promise<SpotifyDTO>;
     }
-
-    async function preload(src: string) {
-        const resp = await fetch(src);
-        const blob = await resp.blob();
-
-        return new Promise(function (resolve) {
-            let reader = new FileReader();
-            reader.readAsDataURL(blob);
-            reader.onload = () => resolve(reader.result);
-
-            reader.onerror = (error) => {
-                console.error(error);
-                resolve(null);
-            }
-        });
-    };
-
 </script>
 
 <a id="spotify-container" href="{trackLink}" bind:this={spotifyElement}>
@@ -140,6 +124,8 @@
 
         transform: translateX(150%);
         transition: transform 1s ease;
+
+        max-width: 90vw;
 
         @media (max-width: 800px) {
             right: 50%;
@@ -217,9 +203,16 @@
                 display: inline-block;
 
                 white-space: nowrap;
+                overflow-x: hidden;
+                text-overflow: ellipsis;
                 
                 @media (max-width: 800px) {
                     font-size: 0.9rem;
+                }
+
+                @media (max-width: 500px) {
+                    font-size: 0.8rem;
+                    max-width: 200px;
                 }
             }
 
