@@ -85,7 +85,7 @@
     }
 </script>
 
-<a id="spotify-container" href="{trackLink}" bind:this={spotifyElement}>
+<a id="spotify-container" href="{trackLink}" target="_blank" bind:this={spotifyElement}>
     <img src={imageBase64} alt="Album cover" />
     <div id="song-info">
         <div id="title-container">
@@ -138,8 +138,6 @@
             border-radius: 13px;
 
             gap: 15px;
-
-            animation: flyInMobile 1s ease;
         }
 
         img {
