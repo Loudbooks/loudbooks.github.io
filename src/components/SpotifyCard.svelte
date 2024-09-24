@@ -201,7 +201,7 @@
                 display: inline-block;
 
                 white-space: nowrap;
-                overflow-x: hidden;
+                overflow-x: clip;
                 text-overflow: ellipsis;
                 
                 @media (max-width: 800px) {
