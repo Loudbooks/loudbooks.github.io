@@ -1,22 +1,22 @@
 <script lang="ts">
-    export let iconName = "";
-  
-    let svgIcon: ConstructorOfATypedSvelteComponent | null = null;
+  export let iconName = "";
 
-    loadIcon();
+  let svgIcon: ConstructorOfATypedSvelteComponent | null = null;
 
-    async function loadIcon() {
-        if (iconName) {
-            try {
-                svgIcon = (await import(`../lib/icons/${iconName}.svelte`)).default;
-            } catch (e) {
-                console.error("Component not found:", e);
-                svgIcon = null;
-            }
-        }
+  loadIcon();
+
+  async function loadIcon() {
+    if (iconName) {
+      try {
+        svgIcon = (await import(`../lib/icons/${iconName}.svelte`)).default;
+      } catch (e) {
+        console.error("Component not found:", e);
+        svgIcon = null;
+      }
     }
-  </script>
-  
-  {#if svgIcon}
-    <svelte:component this={svgIcon} />
-  {/if}
+  }
+</script>
+
+{#if svgIcon}
+  <svelte:component this={svgIcon} />
+{/if}
