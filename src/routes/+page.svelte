@@ -164,21 +164,29 @@
     content: "";
     position: absolute;
     width: 0;
-    height: 4px;
+    height: 8px;
     background-color: white;
     bottom: 0;
+    transform: translateY(-15px);
 
     animation: moveIn 1s 0.6s cubic-bezier(0.93, 0, 0.2, 1) forwards;
 
     @keyframes moveIn {
       0% {
         width: 0;
-        height: 0;
       }
       100% {
         width: 100%;
-        height: 4px;
       }
+    }
+
+    @media (max-width: 1050px) {
+      transform: translateY(-10px);
+      height: 4px;
+    }
+
+    @media (max-width: 800px) {
+      transform: translateY(-2px);
     }
   }
 
