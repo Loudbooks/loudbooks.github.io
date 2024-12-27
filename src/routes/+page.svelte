@@ -127,6 +127,8 @@
     @media (max-width: 800px) {
       transform: rotate(90deg) translateY(20%);
       width: 100vh;
+
+      overflow: hidden;
     }
   }
 
