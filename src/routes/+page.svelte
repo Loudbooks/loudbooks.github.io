@@ -66,8 +66,6 @@
         chunks.push(value);
         receivedLength += value.length;
         loadProgress = Math.round((receivedLength / contentLength) * 100);
-
-        console.log(loadProgress);
       }
 
       const blob = new Blob(chunks);
@@ -116,7 +114,7 @@
     top: 0;
     left: 0;
     display: block;
-    z-index: 1000;
+    z-index: 0;
 
     animation: fadeInNoBlur 1s ease;
 
