@@ -7,7 +7,6 @@
   let isImageCached = false;
   let linkContainer: HTMLElement;
 
-  let loadProgress = 0;
   let imageSrc = "landing.webp";
 
   function onImageLoad() {
@@ -77,7 +76,7 @@
 
 <div id="landing-container">
   <div id="background" class={isImageLoaded ? "" : "hidden"}>
-    <img src={imageSrc} alt="Background" />
+    <img draggable="false" src={imageSrc} alt="Background" />
 
     <div id="content">
       <div id="title-container">
@@ -107,6 +106,15 @@
 </div>
 
 <style lang="scss">
+  #background {
+    overflow: hidden;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
   img {
     width: 100vw;
     height: 100vh;
@@ -115,6 +123,7 @@
     left: 0;
     display: block;
     z-index: 0;
+    pointer-events: none;
 
     animation: fadeInNoBlur 1s ease;
 
@@ -122,6 +131,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+
+      overflow: hidden;
     }
 
     @media (max-width: 800px) {

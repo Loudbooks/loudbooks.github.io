@@ -143,7 +143,7 @@
 
       border-radius: 13px;
 
-      gap: 15px;
+      gap: 12px;
     }
 
     img {
@@ -181,7 +181,7 @@
 
         transform: translateX(-4px);
 
-        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
       }
     }
 
