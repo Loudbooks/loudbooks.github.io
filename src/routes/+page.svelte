@@ -9,8 +9,11 @@
 
   let imageSrc = "landing.webp";
 
+  let background: HTMLElement;
+
   function onImageLoad() {
     isImageLoaded = true;
+    background.classList.remove("hidden");
 
     const links = linkContainer.children;
 
@@ -75,7 +78,7 @@
 </script>
 
 <div id="landing-container">
-  <div id="background" class={isImageLoaded ? "" : "hidden"}>
+  <div id="background" class={isImageLoaded ? "" : "hidden"} bind:this={background}>
     <img draggable="false" src={imageSrc} alt="Background" />
 
     <div id="content">
