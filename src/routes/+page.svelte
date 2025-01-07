@@ -13,7 +13,6 @@
 
   function onImageLoad() {
     isImageLoaded = true;
-    background.classList.remove("hidden");
 
     const links = linkContainer.children;
 
@@ -67,7 +66,6 @@
 
         chunks.push(value);
         receivedLength += value.length;
-        loadProgress = Math.round((receivedLength / contentLength) * 100);
       }
 
       const blob = new Blob(chunks);
