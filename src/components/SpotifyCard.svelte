@@ -110,7 +110,6 @@
 
 <style lang="scss">
   #spotify-container {
-    opacity: 0.9;
     backdrop-filter: blur(2px);
 
     display: flex;
@@ -124,12 +123,12 @@
     padding: 10px;
     padding-right: 100px;
 
-    background-color: rgb(0, 0, 0, 0.3);
+    background-color: rgb(255, 255, 255, 0.1);
     border-radius: 30px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
     height: 35px;
-    outline: 4px solid rgb(0, 0, 0, 0.5);
+    outline: 4px solid rgb(255, 255, 255, 0.4);
 
     transform: translateX(150%);
     transition: transform 1s ease;
@@ -142,7 +141,7 @@
       padding-right: 10px;
 
       height: 20px;
-      outline: 2px solid rgb(225, 225, 225, 1);
+      outline: 2px solid rgb(255, 255, 255, 0.5);
 
       border-radius: 13px;
 

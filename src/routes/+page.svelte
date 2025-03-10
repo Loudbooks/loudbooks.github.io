@@ -10,8 +10,6 @@
 
   let imageSrc = "background.png";
 
-  let background: HTMLElement;
-
   function onImageLoad() {
     isImageLoaded = true;
 
@@ -79,7 +77,7 @@
 <Header/>
 <div id="landing-container">
   <div id="background" class={isImageLoaded ? "" : "hidden"}>
-    <img draggable="false" src={imageSrc} alt="Background" bind:this={background} />
+    <img draggable="false" src={imageSrc} alt="Background" />
 
     <div id="content">
       <div id="title-container">
