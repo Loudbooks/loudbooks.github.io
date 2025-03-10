@@ -74,7 +74,7 @@
   }
 </script>
 
-<Header/>
+<!-- <Header/> -->
 <div id="landing-container">
   <div id="background" class={isImageLoaded ? "" : "hidden"}>
     <img draggable="false" src={imageSrc} alt="Background" />
