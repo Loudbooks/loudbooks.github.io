@@ -28,7 +28,7 @@
       .rect {
         width: 4px;
         height: 10px;
-        background-color: black;
+        background-color: white;
         border-radius: 100px;
 
         animation: bounce 2.2s ease infinite alternate;

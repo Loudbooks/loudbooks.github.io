@@ -56,6 +56,10 @@
       }
     }
 
+    &:hover {
+      transform: translateX(5px);
+    }
+
     span::before {
       content: "";
       position: absolute;

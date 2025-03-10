@@ -2,12 +2,13 @@
   import { onMount } from "svelte";
   import Link from "../components/Link.svelte";
   import SpotifyCard from "../components/SpotifyCard.svelte";
+  import Header from "../components/Header.svelte";
 
   let isImageLoaded = false;
   let isImageCached = false;
   let linkContainer: HTMLElement;
 
-  let imageSrc = "landing.webp";
+  let imageSrc = "background.png";
 
   let background: HTMLElement;
 
@@ -75,9 +76,10 @@
   }
 </script>
 
+<Header/>
 <div id="landing-container">
-  <div id="background" class={isImageLoaded ? "" : "hidden"} bind:this={background}>
-    <img draggable="false" src={imageSrc} alt="Background" />
+  <div id="background" class={isImageLoaded ? "" : "hidden"}>
+    <img draggable="false" src={imageSrc} alt="Background" bind:this={background} />
 
     <div id="content">
       <div id="title-container">
@@ -121,26 +123,47 @@
     height: 100vh;
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     display: block;
     z-index: 0;
     pointer-events: none;
-
+    filter: noise(10);
     animation: fadeInNoBlur 1s ease;
+    transform: scaleX(-1) scale(1.3);
+
+    animation: slightOpacityPulse 30px ease-in-out infinite;
 
     @media (max-width: 1100px) {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 100vw;
+      height: 100vh;
 
       overflow: hidden;
+
+      transform: scaleX(-1) scale(1.2);
+      animation: slightOpacityPulse 30px ease-in-out infinite;
+      
+      background-repeat: repeat;
     }
 
     @media (max-width: 800px) {
-      transform: rotate(90deg) translateY(20%);
-      width: 100vh;
+      width: 100%;
 
       overflow: hidden;
+    }
+  }
+
+  @keyframes slightOpacityPulse {
+    0% {
+      opacity: 0.8;
+      transform: scaleX(-1) scale(1.1);
+    }
+    50% {
+      opacity: 1;
+      transform: scaleX(-1) scale(1);
+    }
+    100% {
+      opacity: 0.8;
+      transform: scaleX(-1) scale(1.1);
     }
   }
 
@@ -221,7 +244,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1001;
+    z-index: 2;
     width: 100%;
 
     @media (max-width: 800px) {
@@ -274,6 +297,7 @@
       opacity 1s,
       filter 1s;
     opacity: 0;
+    
     filter: blur(20px);
   }
 

@@ -110,6 +110,9 @@
 
 <style lang="scss">
   #spotify-container {
+    opacity: 0.9;
+    backdrop-filter: blur(2px);
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -121,12 +124,12 @@
     padding: 10px;
     padding-right: 100px;
 
-    background-color: rgb(255, 255, 255, 1);
+    background-color: rgb(0, 0, 0, 0.3);
     border-radius: 30px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
     height: 35px;
-    outline: 4px solid rgb(225, 225, 225, 1);
+    outline: 4px solid rgb(0, 0, 0, 0.5);
 
     transform: translateX(150%);
     transition: transform 1s ease;
@@ -188,7 +191,7 @@
     #song-info {
       transform: translateX(-5px);
 
-      color: black;
+      color: white;
 
       #title-container {
         display: flex;
@@ -239,7 +242,7 @@
         display: block;
         width: 0%;
         height: 1.5px;
-        background-color: black;
+        background-color: white;
         margin-top: -2.5px;
 
         transition: width 0.5s cubic-bezier(0.93, 0, 0.2, 1);
