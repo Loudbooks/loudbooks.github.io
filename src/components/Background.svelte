@@ -1,15 +1,29 @@
 <script lang="ts">
+    import { onMount } from "svelte";
+
   interface Props {
     imageSrc?: string;
+    loadCallback?: () => void;
   }
 
-  let { imageSrc = "background.webp" }: Props = $props();
+  let { imageSrc = "background.webp", loadCallback }: Props = $props();
 
-  let imageRef: HTMLImageElement | null = $state(null);
+  let imageRef: HTMLImageElement;
+
+  onMount(() => {
+    imageRef.src = imageSrc;
+    imageRef.decode().then(() => {
+      imageRef.style.opacity = "1";
+
+      if (loadCallback) {
+        loadCallback();
+      }
+    });
+  });
 </script>
 
 <div id="background">
-  <img id="img" src={imageSrc} alt="Background" bind:this={imageRef} />
+  <img id="img" alt="Background" bind:this={imageRef} />
 </div>
 
 <style lang="scss">
@@ -32,18 +46,9 @@
     display: block;
     pointer-events: none;
     filter: noise(10);
-    animation: fadeInNoBlur 1s ease forwards;
     transform: scaleX(-1) scale(1.3);
-  }
-
-  @keyframes fadeInNoBlur {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
+    opacity: 0;
+    transition: opacity 1s ease;
   }
 
   .hidden {
