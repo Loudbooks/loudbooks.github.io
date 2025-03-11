@@ -8,7 +8,7 @@
   let isImageCached = false;
   let linkContainer: HTMLElement;
 
-  let imageSrc = "background.webp";
+  let imageSrc = "background.png";
 
   function onImageLoad() {
     isImageLoaded = true;
@@ -28,76 +28,31 @@
       );
     }
   }
-  onMount(() => {
-    fetchImageWithCache("landing.webp");
-  });
 
   onMount(() => {
-    if (!isImageCached) {
-      fetchImageWithCache(imageSrc);
-    }
-  });
-
-  async function fetchImageWithCache(url: string) {
-    const cache = await caches.open("image-cache");
-    const cachedResponse = await cache.match(url);
-
-    if (cachedResponse) {
-      const blob = await cachedResponse.blob();
-      imageSrc = URL.createObjectURL(blob);
-      onImageLoad();
-    } else {
-      const response = await fetch(url);
-      const clone = response.clone();
-      cache.put(url, clone);
-      if (response.body == null) return;
-      if (response.headers == null) return;
-
-      const reader = response.body.getReader();
-      const contentLengthHeader = response.headers.get("Content-Length");
-      const contentLength = contentLengthHeader ? + contentLengthHeader : 0;
-      let receivedLength = 0;
-      let chunks = [];
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        chunks.push(value);
-        receivedLength += value.length;
-      }
-
-      const blob = new Blob(chunks);
-      imageSrc = URL.createObjectURL(blob);
-      onImageLoad();
-    }
-  }
+    onImageLoad();
+  })
 </script>
 
-<!-- <Header/> -->
 <div id="landing-container">
-  <div id="background" class={isImageLoaded ? "" : "hidden"}>
-    <img draggable="false" src={imageSrc} alt="Background" />
-
-    <div id="content">
-      <div id="title-container">
-        <h1 id="line-one">Hi.</h1>
-        <h1 id="line-two">I'm <span>Loudbook</span>.</h1>
-        <div id="link-container" bind:this={linkContainer}>
-          <div id="link-one" class="link">
-            <Link
-              destination="https://github.com/Loudbooks"
-              text="https://github.com/Loudbooks"
-              glyph="GitHub"
-            />
-          </div>
-          <div id="link-two" class="link">
-            <Link
-              destination="mailto:contact@loudbook.dev"
-              text="contact@loudbook.dev"
-              glyph="Email"
-            />
-          </div>
+  <div id="content">
+    <div id="title-container">
+      <h1 id="line-one">Hi.</h1>
+      <h1 id="line-two">I'm <span>Loudbook</span>.</h1>
+      <div id="link-container" bind:this={linkContainer}>
+        <div id="link-one" class="link">
+          <Link
+            destination="https://github.com/Loudbooks"
+            text="https://github.com/Loudbooks"
+            glyph="GitHub"
+          />
+        </div>
+        <div id="link-two" class="link">
+          <Link
+            destination="mailto:contact@loudbook.dev"
+            text="contact@loudbook.dev"
+            glyph="Email"
+          />
         </div>
       </div>
     </div>

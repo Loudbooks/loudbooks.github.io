@@ -6,11 +6,9 @@
   }
 
   let { children }: Props = $props();
-  let backgroundRef: Background = $state();
-
 </script>
 
-<Header />
+<!-- <Header /> -->
 <Background bind:this={backgroundRef} />
 
 <div id="all-content">
@@ -20,6 +18,8 @@
 <style lang="scss">
   #all-content {
     animation: fadeIn 0.5s ease-in-out forwards;
+    opacity: 1;
+    background-color: transparent;
 
     @keyframes fadeIn {
       0% {
