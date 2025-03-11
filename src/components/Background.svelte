@@ -3,7 +3,7 @@
     imageSrc?: string;
   }
 
-  let { imageSrc = "src/lib/images/background.webp" }: Props = $props();
+  let { imageSrc = "background.webp" }: Props = $props();
 
   let imageRef: HTMLImageElement | null = $state(null);
 </script>
