@@ -8,7 +8,7 @@
   let isImageCached = false;
   let linkContainer: HTMLElement;
 
-  let imageSrc = "background.png";
+  let imageSrc = "background.webp";
 
   function onImageLoad() {
     isImageLoaded = true;

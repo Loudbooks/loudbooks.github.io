@@ -110,8 +110,6 @@
 
 <style lang="scss">
   #spotify-container {
-    backdrop-filter: blur(2px);
-
     display: flex;
     align-items: center;
     justify-content: center;
