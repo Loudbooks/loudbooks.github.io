@@ -11,20 +11,20 @@
   let isImageLoaded = $state(false);
 
   let loadCallback = () => {
-    isImageLoaded = true;
+    // isImageLoaded = true;
 
     if (loadingRef) {
-      loadingRef.style.opacity = "0";
+      // loadingRef.style.opacity = "0";
     }
 
     setTimeout(() => {
-      loading = false;
+      // loading = false;
     }, 1000);
   };
 </script>
 
 <!-- <Header /> -->
-<Background {loadCallback} />
+<!-- <Background {loadCallback} /> -->
 
 {#if loading}
   <div id="loading-screen" bind:this={loadingRef}>
@@ -76,6 +76,11 @@
       margin: 0 auto;
       position: relative;
       z-index: -2;
+
+      @media (max-width: 800px) {
+        width: 35%;
+        height: 3px;
+      }
 
       animation: fadeIn 1s ease-in-out forwards;
 
