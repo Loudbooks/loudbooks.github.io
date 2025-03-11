@@ -9,7 +9,7 @@
 </script>
 
 <!-- <Header /> -->
-<Background bind:this={backgroundRef} />
+<Background />
 
 <div id="all-content">
     {@render children?.()}

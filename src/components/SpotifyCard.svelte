@@ -114,7 +114,7 @@
     align-items: center;
     justify-content: center;
 
-    position: absolute;
+    position: fixed;
     bottom: 30px;
     right: -10px;
     z-index: 1005;
