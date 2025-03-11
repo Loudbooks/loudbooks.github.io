@@ -4,7 +4,7 @@
     children?: import("svelte").Snippet;
   }
 
-  let loadingRef: HTMLDivElement;
+  let loadingRef: HTMLDivElement | null = $state(null)
 
   let { children }: Props = $props();
   let loading = $state(true);
@@ -13,7 +13,10 @@
   let loadCallback = () => {
     isImageLoaded = true;
 
-    loadingRef.style.opacity = "0";
+    if (loadingRef) {
+      loadingRef.style.opacity = "1";
+    }
+
     setTimeout(() => {
       loading = false;
     }, 1000);

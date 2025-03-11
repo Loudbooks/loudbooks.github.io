@@ -58,6 +58,10 @@
 
     &:hover {
       transform: translateX(5px);
+
+      @media (max-width: 800px) {
+        transform: translateY(-4px);
+      }
     }
 
     span::before {
