@@ -14,7 +14,7 @@
     isImageLoaded = true;
 
     if (loadingRef) {
-      loadingRef.style.opacity = "1";
+      loadingRef.style.opacity = "0";
     }
 
     setTimeout(() => {
@@ -61,6 +61,10 @@
     z-index: -2;
 
     transition: opacity 0.2s ease;
+
+    @media (max-width: 800px) {
+      transition: opacity 0.1s ease;
+    }
 
     .loading-bar {
       width: 30%;
