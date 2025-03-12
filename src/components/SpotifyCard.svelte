@@ -193,6 +193,10 @@
       filter: blur(15px);
       z-index: -1;
       opacity: 0.5;
+
+      @media (max-width: 800px) {
+        display: none;
+      }
     }
 
     #song-info {
