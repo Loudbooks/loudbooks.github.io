@@ -3,15 +3,30 @@
 
   interface Props {
     imageSrc?: string;
-    loadCallback?: () => void;
+    loadCallback?: (cached: boolean) => void;
   }
 
   let { imageSrc = "background.webp", loadCallback }: Props = $props();
 
   let imageRef: HTMLImageElement;
+  let imageCached = true;
 
   onMount(() => {
     imageRef.src = imageSrc;
+
+    if (imageRef.complete) {
+      imageCached = true;
+      imageRef.style.opacity = "1";
+
+      if (loadCallback) {
+        loadCallback(true);
+      }
+
+      return;
+    } else {
+      imageCached = false;
+    }
+
     imageRef.decode().then(() => {
       imageRef.style.opacity = "1";
 

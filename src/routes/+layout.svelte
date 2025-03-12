@@ -77,12 +77,12 @@
       position: relative;
       z-index: -2;
 
+      animation: fadeIn 1s ease-in-out forwards;
+
       @media (max-width: 800px) {
         width: 35%;
         height: 3px;
       }
-
-      animation: fadeIn 1s ease-in-out forwards;
 
       .loading-bar-fill {
         width: 20%;
