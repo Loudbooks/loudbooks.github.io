@@ -27,11 +27,7 @@
 <Background {loadCallback} />
 
 {#if loading}
-  <div id="loading-screen" bind:this={loadingRef}>
-    <div class="loading-bar">
-      <div class="loading-bar-fill"></div>
-    </div>
-  </div>
+  <div id="loading-screen" bind:this={loadingRef}></div>
 {/if}
 
 {#if isImageLoaded}
@@ -64,48 +60,6 @@
 
     @media (max-width: 800px) {
       transition: opacity 0.1s ease;
-    }
-
-    .loading-bar {
-      width: 30%;
-      height: 5px;
-      background-color: #444;
-      overflow: hidden;
-      position: relative;
-      border-radius: 10px;
-      margin: 0 auto;
-      position: relative;
-      z-index: -2;
-
-      animation: fadeIn 1s ease-in-out forwards;
-
-      @media (max-width: 800px) {
-        width: 35%;
-        height: 3px;
-      }
-
-      .loading-bar-fill {
-        width: 20%;
-        background-color: white;
-        height: 100%;
-        position: absolute;
-        left: 100%;
-        transform: translateX(-50%);
-        border-radius: 10px;
-
-        animation: loading 5s ease-in-out infinite;
-        @keyframes loading {
-          0% {
-            left: 100%;
-          }
-          50% {
-            left: 0;
-          }
-          100% {
-            left: 100%;
-          }
-        }
-      }
     }
   }
 
