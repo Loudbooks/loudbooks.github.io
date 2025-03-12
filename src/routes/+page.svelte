@@ -2,13 +2,9 @@
   import { onMount } from "svelte";
   import Link from "../components/Link.svelte";
   import SpotifyCard from "../components/SpotifyCard.svelte";
-  import Header from "../components/Header.svelte";
 
   let isImageLoaded = false;
-  let isImageCached = false;
   let linkContainer: HTMLElement;
-
-  let imageSrc = "background.png";
 
   function onImageLoad() {
     isImageLoaded = true;
