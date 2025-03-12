@@ -84,11 +84,7 @@
     }
 
     &:active {
-      transform: scale(0.98);
-
-      @media (max-width: 1300px) {
-        transform: scale(0.95);
-      }
+      transform: translateX(0px);
     }
 
     &:hover {
