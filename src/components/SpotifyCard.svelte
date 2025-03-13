@@ -93,7 +93,6 @@
   bind:this={spotifyElement}
 >
   <img src={imageBase64} alt="Album cover" />
-  <img src={imageBase64} alt="Album cover" id="background-blurred" />
   <div id="song-info">
     <div id="title-container">
       <h1 bind:this={spotifyElementTitle} id="track-title">{trackName}</h1>
@@ -183,19 +182,6 @@
         transform: translateX(-4px);
 
         box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
-      }
-    }
-
-    #background-blurred {
-      transform: translateX(-10px) !important;
-      position: absolute;
-      left: 0;
-      filter: blur(15px);
-      z-index: -1;
-      opacity: 0.5;
-
-      @media (max-width: 800px) {
-        display: none;
       }
     }
 
