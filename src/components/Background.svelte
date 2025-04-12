@@ -3,7 +3,7 @@
 
   interface Props {
     imageSrc?: string;
-    loadCallback?: (cached: boolean) => void;
+    loadCallback?: () => void;
   }
 
   let { imageSrc = "background.webp", loadCallback }: Props = $props();
@@ -19,7 +19,7 @@
       imageRef.style.opacity = "1";
 
       if (loadCallback) {
-        loadCallback(true);
+        loadCallback();
       }
 
       return;
@@ -41,6 +41,10 @@
   <img id="img" alt="Background" bind:this={imageRef} />
 </div>
 
+<div id="filter-container">
+  <rect style='background-image: url(https://upload.wikimedia.org/wikipedia/commons/9/9a/512x512_Dissolve_Noise_Texture.png)'/>
+</div>
+
 <style lang="scss">
   #background {
     overflow: hidden;
@@ -49,7 +53,46 @@
     height: 100vh;
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: -2;
+
+    animation: slightRotate 10s linear infinite;
+  }
+
+  @keyframes slightRotate {
+    0% {
+      transform: rotate(0deg);
+      filter: brightness(1);
+    }
+    50% {
+      transform: rotate(30deg) scale(2);
+      filter: brightness(1.1)
+    }
+    100% {
+      transform: rotate(0deg);
+      filter: brightness(1);
+    }
+  }
+
+  rect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110%;
+    mix-blend-mode: overlay;
+    background-repeat: repeat;
+    opacity: 0.2;
+    background-size: 400px;
+  }
+
+  #filter-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    mix-blend-mode: overlay;
   }
 
   #img {
@@ -60,13 +103,8 @@
     right: 0;
     display: block;
     pointer-events: none;
-    filter: noise(10);
     transform: scaleX(-1) scale(1.3);
     opacity: 0;
     transition: opacity 1s ease;
-  }
-
-  .hidden {
-    display: none;
   }
 </style>
