@@ -16,7 +16,10 @@
 
     if (imageRef.complete) {
       imageCached = true;
-      imageRef.style.opacity = "1";
+
+      setTimeout(() => {
+        imageRef.style.opacity = "1";
+      });
 
       if (loadCallback) {
         loadCallback();
