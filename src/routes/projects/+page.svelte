@@ -5,7 +5,7 @@
 
 
 
-<Background imageSrc="background.webp" />
+<Background imageSrc="background-no-grain.webp" />
 
 <div id="projects-container">
     <h1>projects.</h1>

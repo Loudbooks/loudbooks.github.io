@@ -6,7 +6,7 @@
     loadCallback?: () => void;
   }
 
-  let { imageSrc = "background.webp", loadCallback }: Props = $props();
+  let { imageSrc = "background-no-grain.webp", loadCallback }: Props = $props();
 
   let imageRef: HTMLImageElement;
   let imageCached = true;
