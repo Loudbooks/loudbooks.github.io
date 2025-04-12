@@ -55,7 +55,7 @@
     left: 0;
     z-index: -2;
 
-    animation: slightRotate 10s linear infinite;
+    animation: slightRotate 10s ease-in-out infinite;
   }
 
   @keyframes slightRotate {
