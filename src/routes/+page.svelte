@@ -79,6 +79,7 @@
       text-align: center;
       width: 100%;
       font-size: 50px;
+      letter-spacing: -1.5px;
     }
   }
 
