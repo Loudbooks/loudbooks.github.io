@@ -26,7 +26,7 @@
 <!-- <Header /> -->
 <Background {loadCallback} />
 
-{#if loading}
+{#if (loading && !isImageLoaded)}
   <div id="loading-screen" bind:this={loadingRef}></div>
 {/if}
 
