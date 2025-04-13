@@ -7,6 +7,13 @@ export default defineConfig({
     enhancedImages(),
     sveltekit()
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler'
+      }
+    }
+  },
   server: {
     fs: {
       allow: [
