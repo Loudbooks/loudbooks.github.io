@@ -67,7 +67,6 @@
     left: 0;
     width: 100%;
     height: 110%;
-    mix-blend-mode: overlay;
     background-repeat: repeat;
     opacity: 0.6;
     background-size: 200px;
