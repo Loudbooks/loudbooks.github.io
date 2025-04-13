@@ -58,24 +58,9 @@
     left: 0;
     z-index: -2;
 
-    animation: slightRotate 10s ease-in-out infinite;
+    filter: saturate(1.4);
   }
-
-  @keyframes slightRotate {
-    0% {
-      transform: rotate(0deg);
-      filter: brightness(1);
-    }
-    50% {
-      transform: rotate(30deg) scale(2);
-      filter: brightness(1.1)
-    }
-    100% {
-      transform: rotate(0deg);
-      filter: brightness(1);
-    }
-  }
-
+  
   rect {
     position: absolute;
     top: 0;
@@ -84,8 +69,8 @@
     height: 110%;
     mix-blend-mode: overlay;
     background-repeat: repeat;
-    opacity: 0.2;
-    background-size: 400px;
+    opacity: 0.6;
+    background-size: 200px;
   }
 
   #filter-container {

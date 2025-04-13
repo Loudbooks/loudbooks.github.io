@@ -63,6 +63,7 @@
     font-weight: 400;
     color: white;
     font-size: 170px;
+    letter-spacing: -4px;
 
     margin: 0;
 
