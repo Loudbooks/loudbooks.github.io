@@ -1,7 +1,11 @@
 <script lang="ts">
-  export let iconName = "";
+  interface Props {
+    iconName?: string;
+  }
 
-  let svgIcon: ConstructorOfATypedSvelteComponent | null = null;
+  let { iconName = "" }: Props = $props();
+
+  let svgIcon: ConstructorOfATypedSvelteComponent | null = $state(null);
 
   loadIcon();
 
@@ -18,5 +22,6 @@
 </script>
 
 {#if svgIcon}
-  <svelte:component this={svgIcon} />
+  {@const SvelteComponent = svgIcon}
+  <SvelteComponent />
 {/if}

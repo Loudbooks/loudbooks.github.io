@@ -4,7 +4,7 @@
   import SpotifyCard from "../components/SpotifyCard.svelte";
 
   let isImageLoaded = false;
-  let linkContainer: HTMLElement;
+  let linkContainer: HTMLElement = $state();
 
   function onImageLoad() {
     isImageLoaded = true;

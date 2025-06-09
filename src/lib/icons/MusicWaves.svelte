@@ -1,5 +1,5 @@
 <script lang="ts">
-  let circle: HTMLElement;
+  let circle: HTMLElement = $state();
 </script>
 
 <div id="circle" bind:this={circle}>

@@ -1,9 +1,13 @@
 <script lang="ts">
   import DynamicSvg from "./DynamicSVG.svelte";
 
-  export let destination: string;
-  export let text: string;
-  export let glyph: string;
+  interface Props {
+    destination: string;
+    text: string;
+    glyph: string;
+  }
+
+  let { destination, text, glyph }: Props = $props();
 </script>
 
 <a href={destination} target="_blank">

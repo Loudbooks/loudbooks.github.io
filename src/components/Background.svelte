@@ -1,19 +1,17 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import BackgroundImage from "$lib/images/background-no-grain.webp?enhanced";
 
   interface Props {
-    imageSrc?: string;
     loadCallback?: () => void;
   }
 
-  let { imageSrc = "background-no-grain.webp", loadCallback }: Props = $props();
+  let { loadCallback }: Props = $props();
 
-  let imageRef: HTMLImageElement;
+  let imageRef: HTMLImageElement = $state(null);
   let imageCached = true;
 
   onMount(() => {
-    imageRef.src = imageSrc;
-
     if (imageRef.complete) {
       imageCached = true;
 
@@ -41,7 +39,7 @@
 </script>
 
 <div id="background">
-  <img id="img" alt="Background" bind:this={imageRef} />
+  <enhanced:img src={BackgroundImage} id="img" alt="Background" bind:this={imageRef} />
 </div>
 
 <div id="filter-container">

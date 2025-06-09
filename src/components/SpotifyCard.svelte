@@ -4,16 +4,16 @@
   import type { SpotifyDTO } from "$lib/types/SpotifyDTO";
   import { onMount } from "svelte";
 
-  let spotifyElement: HTMLElement;
-  let spotifyElementTitle: HTMLElement;
+  let spotifyElement: HTMLElement = $state();
+  let spotifyElementTitle: HTMLElement = $state();
 
   let data: SpotifyDTO | undefined = undefined;
-  let imageBase64: string | undefined;
+  let imageBase64: string | undefined = $state();
   let response: Promise<SpotifyDTO>;
 
-  let trackName: string = "";
-  let artistName: string = "";
-  let trackLink: string = "";
+  let trackName: string = $state("");
+  let artistName: string = $state("");
+  let trackLink: string = $state("");
 
   onMount(async () => {
     response = fetchSong();
