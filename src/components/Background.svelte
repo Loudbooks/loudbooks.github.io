@@ -45,7 +45,7 @@
 </div>
 
 <div id="filter-container">
-  <rect style='background-image: url(https://upload.wikimedia.org/wikipedia/commons/9/9a/512x512_Dissolve_Noise_Texture.png)'/>
+  <rect style='background-image: url(/background-grain.webp)'/>
 </div>
 
 <style lang="scss">
