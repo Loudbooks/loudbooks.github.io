@@ -1,214 +1,192 @@
-<script lang="ts">
-  import { onMount } from "svelte";
-  import Link from "../components/Link.svelte";
-  import SpotifyCard from "../components/SpotifyCard.svelte";
-
-  let isImageLoaded = false;
-  let linkContainer: HTMLElement = $state();
-
-  function onImageLoad() {
-    isImageLoaded = true;
-
-    const links = linkContainer.children;
-
-    for (let i = 0; i < links.length; i++) {
-      let link = links[i] as HTMLElement;
-
-      setTimeout(
-        () => {
-          link.style.transform = "translateY(0px)";
-          link.style.opacity = "1";
-          link.style.filter = "blur(0px)";
-        },
-        (i + 4) * 200,
-      );
-    }
-  }
-
-  onMount(() => {
-    onImageLoad();
-  })
+<script>
+  import Button from "../components/Button.svelte";
 </script>
 
-<div id="landing-container">
-  <div id="content">
-    <div id="title-container">
-      <h1 id="line-one">Hi.</h1>
-      <h1 id="line-two">I'm <span>Loudbook</span>.</h1>
-      <div id="link-container" bind:this={linkContainer}>
-        <div id="link-one" class="link">
-          <Link
-            destination="https://github.com/Loudbooks"
-            text="https://github.com/Loudbooks"
-            glyph="GitHub"
-          />
+<div id="page">
+  <div id="title-container">
+    <div id="title-wrapper">
+      <h1 id="title">
+        {#each "Loudbook".split("") as letter, i}
+          <span style="animation-delay: {i * 0.05 + .5}s" class="letter">{letter}</span>
+        {/each}
+      </h1>
+      <div class="line" id="title-line"></div>
+    </div>
+    <p id="subtitle">
+      {#each "An open source developer focusing on usability and perfection down to the smallest detail.".split(" ") as word, i}
+      <div class="word">
+        {#each word.split("") as letter, j}
+          <span style="animation-delay: {(i + j * 0.1) * 0.05 + .5}s" class="letter">{letter}</span>
+        {/each}
+      </div>
+
+        <span style="animation-delay: {(i + word.length * 0.1) * 0.05 + .5}s" class="letter"> </span>
+      {/each}
+    </p>
+    <div id="button-container">
+      {#each Object.entries({
+        "https://github.com/Loudbooks": "GitHub",
+        "mailto:contact@loudbook.dev": "Email",
+      }) as [url, title], index (url)}
+        <div class="button" style="animation-delay: {index * 0.2 + .8 + .5}s">
+        <Button {title} {url} />
         </div>
-        <div id="link-two" class="link">
-          <Link
-            destination="mailto:contact@loudbook.dev"
-            text="contact@loudbook.dev"
-            glyph="Email"
-          />
-        </div>
+      {/each}
+    </div>
+  </div>
+  <div id="footer-container">
+    <div id="footer-wrapper">
+      <div class="line" id="footer-line"></div>
+      <div id="tags-wrapper">
+        <h1 id="footer">developer</h1>
+        <h1 id="footer">designer</h1>
       </div>
     </div>
-
-    <SpotifyCard />
   </div>
 </div>
 
 <style lang="scss">
-  h1 {
-    font-family: "Visby";
-    font-weight: 400;
-    color: white;
-    font-size: 170px;
-    letter-spacing: -4px;
-
-    margin: 0;
-
-    @media (max-width: 1300px) {
-      font-size: 150px;
-    }
-
-    @media (max-width: 1050px) {
-      font-size: 110px;
-    }
-
-    @media (max-width: 800px) {
-      text-align: center;
-      width: 100%;
-      font-size: 50px;
-      letter-spacing: -1.5px;
-    }
+  #page {
+    height: 100vh;
+    width: 100vw;
   }
-
-  span {
-    font-weight: 1000;
-    position: relative;
-  }
-
-  span::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 8px;
-    background-color: white;
-    bottom: 0;
-    transform: translateY(-15px);
-
-    animation: moveIn 1s 0.6s cubic-bezier(0.93, 0, 0.2, 1) forwards;
-
-    @keyframes moveIn {
-      0% {
-        width: 0;
-      }
-      100% {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 1050px) {
-      transform: translateY(-10px);
-      height: 4px;
-    }
-
-    @media (max-width: 800px) {
-      transform: translateY(-2px);
-    }
-  }
-
   #title-container {
-    padding: 0;
-    margin-left: 5vw;
-    margin-top: 5vw;
-
-    @media (max-width: 800px) {
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-  }
-
-  #content {
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-
-    @media (max-width: 800px) {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-  }
-
-  #link-container {
-    margin-top: 150px;
-
     display: flex;
     flex-direction: column;
-    gap: 20px;
-
-    @media (max-width: 1300px) {
-      gap: 10px;
-    }
-
-    @media (max-width: 800px) {
-      margin-top: 100px;
-      display: flex;
-      flex-direction: row;
-      gap: 20px;
-    }
+    justify-content: center;
+    gap: 2rem;
+    top: 8rem;
+    left: 8rem;
+  }
+  #footer-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4rem;
+    bottom: 8rem;
+    right: 8rem;
+  }
+  #title-wrapper,
+  #footer-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    width: 100vw;
+  }
+  #button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
   }
 
-  #line-one {
-    animation: fadeIn 1s ease;
+  .line {
+    height: 0.4rem;
+    background-color: white;
+    flex-grow: 1;
   }
 
-  #line-two {
-    animation: fadeIn 1s ease 0.2s forwards;
+  #title-line {
+    margin-left: 15rem;
+    // transform: scaleY(100) scaleX(9);
+    width: 50vw;
 
-    opacity: 0;
+    // animation: scaleToRegular 1.5s cubic-bezier(0.86,0,0,0.99) forwards;
   }
 
-  .link {
-    width: fit-content;
+  #footer-line {
+    margin-right: 15rem;
+    // transform: scaleY(100) scaleX(9);
 
-    transform: translateY(50px);
-    transition:
-      transform 1s,
-      opacity 1s,
-      filter 1s;
-    opacity: 0;
-    
-    filter: blur(20px);
+    // animation: scaleToRegular 1.5s cubic-bezier(0.86,0,0,0.99) forwards;
   }
 
-  @keyframes fadeIn {
+  @keyframes scaleToRegular {
     0% {
-      opacity: 0;
-      filter: blur(20px);
-      transform: translateY(50px);
+      transform: scaleY(100) scaleX(9);
+    }
+    60% {
+      transform: scaleY(1) scaleX(1.1);
     }
     100% {
-      opacity: 1;
-      filter: blur(0px);
+      transform: scale(1);
+    }
+  }
+
+  #title {
+    font-family: "Overused Grotesk", sans-serif;
+    font-size: 12rem;
+    font-weight: 1000;
+    color: white;
+    margin: 0;
+    line-height: 0.7;
+    letter-spacing: -0.1rem;
+    text-wrap: nowrap;
+  }
+  #footer {
+    font-family: "Overused Grotesk", sans-serif;
+    font-size: 8rem;
+    font-weight: 100;
+    color: white;
+    margin: 0;
+    line-height: 0.5;
+    text-align: right;
+  }
+  p {
+    font-family: "Overused Grotesk", sans-serif;
+    font-size: 2rem;
+    color: white;
+    margin: 0;
+    line-height: 1.1;
+    font-weight: 300;
+    width: 55rem;
+  }
+  #tags-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .letter {
+    opacity: 0;
+    animation: letterHover 1s cubic-bezier(0.86,0,0,0.99) forwards;
+    display: inline-block;
+
+    color: white;
+    white-space: pre;
+  }
+  .button {
+    opacity: 0;
+    animation: letterHover 1s cubic-bezier(0.86,0,0,0.99) forwards;
+  }
+  #subtitle {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    animation-delay: 3s;
+    animation: squish 3s cubic-bezier(0.86,0,0,0.99) forwards;
+  }
+  .word {
+    display: inline-block;
+    margin-right: 0.2rem;
+  }
+  @keyframes letterHover {
+    0% {
+      transform: translateY(20px);
+    }
+    100% {
       transform: translateY(0px);
+      opacity: 1;
     }
   }
-
-  @keyframes fadeInNoBlur {
+  @keyframes squish {
     0% {
-      opacity: 0;
+      margin-top : 2rem;
+      margin-bottom: 2rem;
     }
     100% {
-      opacity: 1;
+      margin-top: 0;
+      margin-bottom: 0;
     }
   }
 </style>

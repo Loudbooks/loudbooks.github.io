@@ -1,8 +1,4 @@
-<script lang="ts">
-  let circle: HTMLElement = $state();
-</script>
-
-<div id="circle" bind:this={circle}>
+<div id="circle">
   <div id="rect-container">
     <span class="rect"></span>
     <span class="rect"></span>

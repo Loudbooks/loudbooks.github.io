@@ -23,7 +23,6 @@
   };
 </script>
 
-<!-- <Header /> -->
 <Background {loadCallback} />
 
 {#if (loading && !isImageLoaded)}
