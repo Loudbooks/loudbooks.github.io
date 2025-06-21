@@ -22,11 +22,11 @@
     }
     .button:hover {
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-        transform: scale(1.02);
+        transform: translateY(-2px);
     }
     .button:active {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        transform: scale(0.98);
+        transform: translateY(2px);
     }
     span {
         color: #9A0100;

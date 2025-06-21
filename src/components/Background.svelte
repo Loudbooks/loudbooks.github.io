@@ -60,7 +60,6 @@
 <div id="filter-container">
   <rect style='background-image: url(/background-grain.webp)'/>
 </div>
-<div id="circle"></div>
 
 <style lang="scss">
   #background {
@@ -72,35 +71,6 @@
     left: 0;
     z-index: -2;
     filter: brightness(1) saturate(1.1)
-  }
-
-  #circle {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: white;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-    animation: shrink 2s cubic-bezier(0.86,0,0,0.99) forwards;
-  }
-
-  @keyframes shrink {
-    0% {
-      width: 250vw;
-      height: 250vw;
-    }
-    100% {
-      width: 0;
-      height: 0;
-      left: -10%;
-      top: -10%;
-    }
   }
   
   rect {
