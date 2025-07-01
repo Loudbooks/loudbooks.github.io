@@ -1,4 +1,5 @@
 <script>
+  import SpotifyStatus from '../components/SpotifyStatus.svelte';
   import Button from "../components/Button.svelte";
 </script>
 
@@ -44,7 +45,9 @@
   </div>
   <div id="footer-container">
     <div id="footer-wrapper">
-      <div class="line" id="footer-line"></div>
+      <div class="line" id="footer-line">
+        <SpotifyStatus />
+      </div>
       <div id="tags-wrapper">
         <h1 id="footer" style="animation-delay: 1.1s">
           {#each "developer".split("") as letter, i}
@@ -74,13 +77,28 @@
     justify-content: space-between;
     margin: 7rem;
     gap: 10rem;
+
+    @media (max-width: 1050px) {
+      margin: 5rem;
+      gap: 5rem;
+      height: calc(100vh - 10rem);
+    }
+
+    @media (max-width: 875px) {
+      margin: 3rem;
+      gap: 3rem;
+      height: calc(100vh - 6rem);
+    }
   }
   #title-container {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     justify-self: start;
-    // width: 100%;
+
+    @media (max-width: 1300px) {
+      gap: 1.5rem;
+    }
   }
   #footer-container {
     display: flex;
@@ -89,6 +107,10 @@
     gap: 4rem;
     width: 100%;
     height: 100%;
+
+    @media (max-width: 1300px) {
+      gap: 2rem;
+    }
   }
   #title-wrapper,
   #footer-wrapper {
@@ -98,6 +120,10 @@
     width: 100%;
     height: 100%;
     gap: 7rem;
+
+    @media (max-width: 1300px) {
+      gap: 3rem;
+    }
   }
   #footer-wrapper {
     align-items: end;
@@ -111,6 +137,11 @@
     flex-direction: row;
     gap: 2.5rem;
     width: max-content;
+
+    @media (max-width: 1300px) {
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
   }
   #top-container {
     display: flex;
@@ -118,10 +149,20 @@
     gap: 7rem;
     width: 100%;
     height: 100%;
+
+    @media (max-width: 1300px) {
+      gap: 3rem;
+    }
+
+    @media (max-width: 875px) {
+      height: auto;
+      width: 100%;
+      justify-content: center;
+      gap: 2rem;
+    }
   }
 
   .line {
-    // height: 100%;
     flex-grow: 1;
   }
 
@@ -133,6 +174,15 @@
     border-right: 5px solid white;
     border-top: 5px solid white;
     transform-origin: right;
+
+    @media (max-width: 1300px) {
+      border-right: 3px solid white;
+      border-top: 3px solid white;
+    }
+
+    @media (max-width: 875px) {
+      display: none;
+    }
   }
 
   #footer-line {
@@ -145,6 +195,16 @@
     border-bottom: 5px solid white;
     border-left: 5px solid white;
     transform-origin: left;
+
+    @media (max-width: 1300px) {
+      border-bottom: 3px solid white;
+      border-left: 3px solid white;
+    }
+
+    @media (max-width: 875px) {
+      border-bottom: 2px solid white;
+      border-left: 2px solid white;
+    }
   }
 
   @keyframes scaleToRegularTopRight {
@@ -178,6 +238,19 @@
     line-height: 0.7;
     letter-spacing: -0.1rem;
     text-wrap: nowrap;
+
+    @media (max-width: 1300px) {
+      font-size: 10rem;
+    }
+
+    @media (max-width: 1050px) {
+      font-size: 8rem;
+    }
+
+    @media (max-width: 875px) {
+      font-size: 4rem;
+      letter-spacing: -0.05rem;
+    }
   }
   #footer {
     font-family: "Overused Grotesk", sans-serif;
@@ -191,6 +264,14 @@
     text-wrap: nowrap;
     opacity: 0;
     animation: letterHover 1s cubic-bezier(0.86, 0, 0, 0.99) forwards;
+
+    @media (max-width: 1300px) {
+      font-size: 5rem;
+    }
+
+    @media (max-width: 1050px) {
+      font-size: 3rem;
+    }
   }
   p {
     font-family: "Overused Grotesk", sans-serif;
@@ -200,11 +281,31 @@
     line-height: 1.1;
     font-weight: 300;
     width: 55rem;
+
+    @media (max-width: 1300px) {
+      font-size: 1.5rem;
+      width: 40rem;
+    }
+
+    @media (max-width: 1050px) {
+      font-size: 1.4rem;
+      width: 35rem;
+    }
+
+    @media (max-width: 875px) {
+      font-size: 1rem;
+      width: 100%;
+    }
   }
+
   #tags-wrapper {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
+
+    @media (max-width: 1300px) {
+      gap: 1.5rem;
+    }
   }
   .letter {
     opacity: 0;

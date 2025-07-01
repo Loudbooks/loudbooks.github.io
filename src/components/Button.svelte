@@ -19,6 +19,26 @@
         cursor: pointer;
         border-radius: 16px;
         transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+        @media (max-width: 1300px) {
+            width: 150px;
+            height: 50px;
+            font-size: 1.2rem;  
+        }
+
+        @media (max-width: 1050px) {
+            width: 120px;
+            height: 45px;
+            font-size: 1.2rem; 
+            border-radius: 14px; 
+        }
+
+        @media (max-width: 875px) {
+            width: 80px;
+            height: 30px;
+            font-size: 0.8rem; 
+            border-radius: 8px; 
+        }
     }
     .button:hover {
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
