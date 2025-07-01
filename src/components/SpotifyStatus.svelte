@@ -115,7 +115,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    border: 3px solid red;
     width: 100%;
 
     @media (max-width: 800px) {
