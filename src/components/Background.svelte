@@ -8,14 +8,24 @@
 
   let { loadCallback }: Props = $props();
 
-  let imageRef: HTMLImageElement = $state(null);
+  let imageRef: HTMLImageElement | null = $state(null);
   let imageCached = true;
 
   onMount(() => {
+    if (!imageRef) {
+      console.error("Image reference is null.");
+      return;
+    }
+
     if (imageRef.complete) {
       imageCached = true;
 
       setTimeout(() => {
+        if (!imageRef) {
+          console.error("Image reference is null.");
+          return;
+        }
+
         imageRef.style.opacity = "1";
       });
 
@@ -29,6 +39,11 @@
     }
 
     imageRef.decode().then(() => {
+      if (!imageRef) {
+        console.error("Image reference is null.");
+        return;
+      }
+
       imageRef.style.opacity = "1";
 
       if (loadCallback) {
@@ -55,8 +70,7 @@
     top: 0;
     left: 0;
     z-index: -2;
-
-    filter: saturate(1.4);
+    filter: brightness(1) saturate(1.1)
   }
   
   rect {
@@ -88,7 +102,7 @@
     right: 0;
     display: block;
     pointer-events: none;
-    transform: scaleX(-1) scale(1.3);
+    transform: scale(1.3);
     opacity: 0;
     transition: opacity 1s ease;
   }

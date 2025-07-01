@@ -1,8 +1,4 @@
-<script lang="ts">
-  let circle: HTMLElement = $state();
-</script>
-
-<div id="circle" bind:this={circle}>
+<div id="circle">
   <div id="rect-container">
     <span class="rect"></span>
     <span class="rect"></span>
@@ -17,22 +13,24 @@
     align-items: center;
     gap: 10px;
 
-    border-radius: 50%;
     position: relative;
 
     #rect-container {
       display: flex;
       align-items: end;
-      gap: 0.5px;
 
       .rect {
-        width: 4px;
-        height: 10px;
+        width: 15px;
+        height: 30px;
         background-color: white;
-        border-radius: 100px;
 
         animation: bounce 2.2s ease infinite alternate;
         transform-origin: bottom;
+        
+        @media (max-width: 1050px) {
+          width: 10px;
+          height: 20px;
+        }
       }
 
       span {

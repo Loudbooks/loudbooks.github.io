@@ -98,6 +98,9 @@
       <h1 bind:this={spotifyElementTitle} id="track-title">{trackName}</h1>
       <div id="waves-container">
         <MusicWaves />
+        <p>
+          Listening to Blah by Blah
+        </p>
       </div>
     </div>
     <h2 id="track-artist">by {artistName}</h2>
