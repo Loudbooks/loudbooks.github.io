@@ -12,6 +12,8 @@ let cachedDTO: SpotifyDTO | null;
 let lastCachedTime: number;
 let cacheTime = 1000 * 30;
 
+console.log("Using access token:", accessToken);
+
 app.get("/api/spotify", async (req: Request, res: Response) => {
   if (!cachedDTO || Date.now() - lastCachedTime > cacheTime) {
     let currentPlayingTrackData = await getCurrentPlayingTrack(accessToken);
