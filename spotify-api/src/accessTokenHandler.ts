@@ -13,5 +13,8 @@ export function getAccessToken() {
     return;
   }
 
-  return fs.readFileSync(cachePath, "utf8");
+  let readString = fs.readFileSync(cachePath, "utf8");
+  let sanitizedToken = readString.trim().replace(/[\n\r]/g, "");
+
+  return sanitizedToken;
 }
