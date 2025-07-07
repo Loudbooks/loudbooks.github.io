@@ -86,7 +86,7 @@ export async function getCurrentPlayingTrack(
       },
     })
     .catch((error) => {
-      console.log(error.status);
+      console.log(JSON.stringify(error));
 
       if (error.response.status === 401) {
         return 401;
