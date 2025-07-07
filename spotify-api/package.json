@@ -16,6 +16,7 @@
     "compile": "tsc",
     "fix": "gts fix",
     "pretest": "npm run compile",
+    "prepare": "npm run compile",
     "posttest": "npm run lint"
   },
   "devDependencies": {
