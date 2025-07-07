@@ -1,15 +1,17 @@
+import { env } from "process";
+
 let fs = require("fs");
-let accessTokenFilePath = "./cache";
+let cachePath = env.CACHE_PATH || "./cache";
 
 export function cacheTokenToFile(token: string) {
-  fs.writeFileSync(accessTokenFilePath, token);
+  fs.writeFileSync(cachePath, token);
 }
 
 export function getAccessToken() {
-  if (!fs.existsSync(accessTokenFilePath)) {
+  if (!fs.existsSync(cachePath)) {
     console.error("No access token found");
     return;
   }
 
-  return fs.readFileSync(accessTokenFilePath, "utf8");
+  return fs.readFileSync(cachePath, "utf8");
 }
