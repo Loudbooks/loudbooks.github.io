@@ -20,6 +20,6 @@ COPY --from=build /app /app
 
 RUN pnpm install --prod --frozen-lockfile
 
-EXPOSE 3000
+EXPOSE 8080
 
 CMD ["node", "build"]
