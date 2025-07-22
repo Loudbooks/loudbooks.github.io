@@ -8,7 +8,7 @@
     <div id="title-container">
       <div id="title-wrapper">
         <h1 id="title">
-          {#each "Loudbook".split("") as letter, i}
+          {#each "Sam Gordon".split("") as letter, i}
             <span style="animation-delay: {i * 0.05}s" class="letter"
               >{letter}</span
             >
