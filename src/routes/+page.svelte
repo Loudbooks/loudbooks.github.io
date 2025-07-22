@@ -34,7 +34,7 @@
         {/each}
       </p>
       <div id="button-container">
-        {#each Object.entries( { "https://github.com/Loudbooks": "GitHub", "mailto:contact@loudbook.dev": "Email" }, ) as [url, title], index (url)}
+        {#each Object.entries( { "https://github.com/Loudbooks": "GitHub", "mailto:gordonsm425@gmail.com": "Email" }, ) as [url, title], index (url)}
           <div class="button" style="animation-delay: {index * 0.2 + 0.8}s">
             <Button {title} {url} />
           </div>
