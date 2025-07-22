@@ -2,6 +2,7 @@ import { getAccessToken } from "./accessTokenHandler";
 import { getCurrentPlayingTrack, getAlbum } from "./spotifyAPI";
 import { Request, Response } from "express";
 import { SpotifyDTO } from "./types/SpotifyDTO";
+import cors from "cors";
 
 export let accessToken = getAccessToken();
 
@@ -54,6 +55,7 @@ app.get("/spotify", async (req: Request, res: Response) => {
   res.json(cachedDTO);
 });
 
+app.use(cors());
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
