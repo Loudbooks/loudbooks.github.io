@@ -34,7 +34,7 @@
   });
 
   function fetchSong() {
-    return fetch("https://loudbook.dev/api/spotify")
+    return fetch("/api/spotify")
       .then((res) => {
         if (res.status !== 200) {
           throw new Error("Failed to fetch Spotify data.");
